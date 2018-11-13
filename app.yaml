@@ -1,0 +1,16 @@
+runtime: python
+api_version: '1'
+env: flex
+threadsafe: true
+env_variables:
+  gunicorn_hint: 'gunicorn -b :$PORT main:app -t 600 -w 8 --threads 8'
+  version_hint: max inst 12
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 12
+  cpu_utilization:
+    target_utilization: 0.8
+resources:
+  cpu: 2
+  memory_gb: 8
+  disk_size_gb: 10
